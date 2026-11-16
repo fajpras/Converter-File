@@ -1,6 +1,7 @@
 """Aplikasi GUI File Converter berbasis CustomTkinter dan TkinterDnD2."""
 
 import os
+import sys
 from tkinter import messagebox
 
 import customtkinter as ctk
@@ -32,6 +33,13 @@ class FileConverterApp(DnDCTk):
         self.title("File Converter")
         self.geometry("500x600")
         self.resizable(False, False)
+
+        icon_path = os.path.join(
+            getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__))),
+            "icon.ico",
+        )
+        if os.path.isfile(icon_path):
+            self.iconbitmap(icon_path)
 
         self._build_ui()
         self._bind_events()
